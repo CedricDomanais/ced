@@ -6,7 +6,8 @@ export class Post {
     public author: string,
     public dateCreated: Date,
     public numberOfLikes: number,
-    public comments: string[] = []
+    public comments: string[] = [],
+    public likeByUsers: string[] = []
   ) {
   }
 }

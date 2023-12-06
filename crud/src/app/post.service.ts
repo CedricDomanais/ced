@@ -39,8 +39,21 @@ export class PostService {
   getSpecPost(index: number) {
     return this.listOfPosts[index];
   }
-  likePost(index: number) {
-    this.listOfPosts[index].numberOfLikes++;
+  likePost(index: number, userId: string) {
+    const post = this.listOfPosts[index];
+  const userIndex = post.likeByUsers.indexOf(userId);
+
+  if (userIndex === -1) {
+    // User has not liked the post yet, so add their like
+    post.numberOfLikes++;
+    post.likeByUsers.push(userId);
+  } else {
+    // User has already liked the post, so remove their like
+    post.numberOfLikes--;
+    post.likeByUsers.splice(userIndex, 1);
+  }
+
+    
     this.http.put(`https://crud-5b63b-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`, this.listOfPosts[index])
       .subscribe(() => {
         console.log('Post updated in Firebase');

@@ -28,7 +28,7 @@ export class PostComponent implements OnInit {
     this.router.navigate(['/post-edit', this.index])
   }
   onLike() {
-    this.postService.likePost(this.index)
+    this.postService.likePost(this.index, 'someUserId');
   }
   onAddComment(comment: string) {
     this.postService.addComment(this.index, comment);
