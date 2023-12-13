@@ -1,0 +1,17 @@
+.fixed-size-image {
+    width: 300px;
+    height: 400px;
+}
+input[type="text"] {
+    width: 255px; /* adjust as needed */
+    height: 40px; /* adjust as needed */
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  div.comment {
+    margin-bottom: 10px;
+  }

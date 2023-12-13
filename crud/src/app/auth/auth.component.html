@@ -1,45 +1,40 @@
-<div class="wrapper">
-    <h2>Sign Up</h2>
-   
-    <form [formGroup]="authForm" (ngSubmit)="signup()">
-        <div class="input-box">
-          <input formControlName="email" type="email" placeholder="Enter your email" required>
-        </div>
-        <div class="input-box">
-          <input formControlName="password" type="password" placeholder="Create password" required>
-        </div>
-        <div class="policy">
-          <input type="checkbox">
-          <h3>I accept all terms & condition</h3>
-        </div>
-        <div class="input-box button">
-          <input type="submit" value="Register Now">
-        </div>
-        <div class="text">
-          <h3>Already have an account? <a href="#">Login now</a></h3>
-        </div>
-      </form>
-  </div>
 
-  <div class="wrapper">
-    <h2>Sign In</h2>
-   
-    <form [formGroup]="authForm" (ngSubmit)="signin()">
-        <div class="input-box">
-          <input formControlName="email" type="email" placeholder="Enter your email" required>
-        </div>
-        <div class="input-box">
-          <input formControlName="password" type="password" placeholder="Create password" required>
-        </div>
-        <div class="policy">
-          <input type="checkbox">
-          <h3>I accept all terms & condition</h3>
-        </div>
-        <div class="input-box button">
-          <input type="submit" value="Login">
-        </div>
-        <div class="text">
-          <h3>Already have an account? <a href="#">Register now</a></h3>
-        </div>
-      </form>
-  </div>
+<div class="container">
+<div class="wrapper" *ngIf="isSignInMode">
+  <h2>Sign In</h2>
+  <form [formGroup]="authForm" (ngSubmit)="signin()">
+    <div class="input-box">
+      <input formControlName="email" type="email" placeholder="Enter your email" required>
+    </div>
+    <div class="input-box">
+      <input formControlName="password" type="password" placeholder="Enter your password" required>
+    </div>
+    <div class="input-box button">
+      <input type="submit" value="Login">
+    </div>
+    <div class="text">
+      <h3>Don't have an account? <a href="#"routerLink="" (click)="switchMode()">Register now</a></h3>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="wrapper" *ngIf="!isSignInMode">
+  <h2>Sign Up</h2>
+  <form [formGroup]="authForm" (ngSubmit)="signup()">
+    <div class="input-box">
+      <input formControlName="email" type="email" placeholder="Enter your email" required>
+    </div>
+    <div class="input-box">
+      <input formControlName="password" type="password" placeholder="Create password" required>
+    </div>
+    <div class="input-box button">
+      <input type="submit" value="Register Now">
+    </div>
+    <div class="text">
+      <h3>Already have an account? <a href="#" (click)="switchMode()">Login now</a></h3>
+    </div>
+  </form>
+</div>
+</div>

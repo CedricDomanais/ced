@@ -30,8 +30,14 @@ export class PostComponent implements OnInit {
   onLike() {
     this.postService.likePost(this.index, 'someUserId');
   }
-  onAddComment(comment: string) {
+  onAddComment(commentInput: HTMLInputElement) {
+    const comment = commentInput.value;
     this.postService.addComment(this.index, comment);
     this.comments = this.postService.getComments(this.index); // Refresh the comments
+    commentInput.value = ''; // Clear the input field
+  }
+  deleteComment(index: number) {
+    this.comments.splice(index, 1);
+    this.postService.deleteComment(this.index, index);
   }
 }

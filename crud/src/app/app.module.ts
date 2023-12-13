@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthService } from './auth.service';
-
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -20,7 +20,10 @@ const routes: Routes = [
   { path: 'post-list', component: PostListComponent },
   { path: 'post-add', component: PostEditComponent },
   { path: 'auth-signin', component: AuthComponent },
+  { path: 'auth-signup', component: AuthComponent },
   { path: 'post-edit/:index', component: PostEditComponent },
+  { path: 'user-profile', component: UserProfileComponent }
+
 ]
 const firebaseConfig = {
   apiKey: "AIzaSyDl-JrfIt9UFHFCZvdjrxBmymypU94zykg",
@@ -39,7 +42,8 @@ const firebaseConfig = {
     HeaderComponent,
     PostComponent,
     PostListComponent,
-    PostEditComponent
+    PostEditComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

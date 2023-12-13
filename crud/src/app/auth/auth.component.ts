@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   authForm: FormGroup = this.formBuilder.group({});
+  isSignInMode = true; // Add this line
 
   constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder, private router:Router) { }
 
@@ -18,6 +19,9 @@ export class AuthComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+  switchMode() { // Add this method
+    this.isSignInMode = !this.isSignInMode;
   }
 
   async signup(): Promise<void> {
@@ -41,5 +45,11 @@ export class AuthComponent implements OnInit {
       console.error('Error during signin:', error);
     }
   }
-
+   
+  signOut() {
+    this.afAuth.signOut().then(() => {
+      this.router.navigate(['/auth-signin']);
+    });
+  }
 }
+

@@ -21,9 +21,6 @@ export class PostService {
     return this.listOfPosts;
   }
   deleteButton(index: number) {
-
-
-    
     this.http.delete(`https://crud-5b63b-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${index}.json`).subscribe(() => {
       console.log('Post deleted from Firebase');
       this.listOfPosts.splice(index, 1);
@@ -76,6 +73,19 @@ export class PostService {
     this.listOfPosts = listOfPosts;
     this.listChangedEvent.emit(listOfPosts);
   }
+  deleteComment(postIndex: number, commentIndex: number) {
+    this.listOfPosts[postIndex].comments.splice(commentIndex, 1);
+    this.http.patch(`https://crud-5b63b-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${postIndex}.json`, { comments: this.listOfPosts[postIndex].comments })
+      .subscribe(() => {
+        console.log('Comment deleted from Firebase');
+      });
 }
-
+getPosts() {
+  const storedPosts = localStorage.getItem('listOfPosts');
+  if (storedPosts) {
+    this.listOfPosts = JSON.parse(storedPosts);
+  } else {
+}
+}
+}
 

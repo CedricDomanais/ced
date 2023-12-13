@@ -1,13 +1,12 @@
 <div class="container mt-3">
   <div class="row justify-content-start">
     <div class="col-md-6">
-  
     </div>
   </div>
 </div>
 
 <h3>{{ post?.title }}</h3>
-<img class="img-responsive" src="{{ post?.imgPath }}" />
+<img class="fixed-size-image" src="{{ post?.imgPath }}" />
 <p>
   {{ post?.description }}
 </p>
@@ -33,14 +32,14 @@
 <button class="btn btn-danger" (click)="delete()">delete</button>
 <br />
 <br />
-<form (ngSubmit)="onAddComment(commentInput.value)">
-  <label class="font-weight-bold">Comments</label>
-  <div *ngFor="let comment of comments">
-    {{ comment }}
+<form (ngSubmit)="onAddComment(commentInput)">
+  <label class="font-weight-bold"></label>
+  <div *ngFor="let comment of comments; let i = index">
+    <div>{{ comment }}</div>
+    <button (click)="deleteComment(i)">Delete</button>
   </div>
-  <input #commentInput type="text" class="form-control" placeholder="comment" />
-
-  <br /><button type="submit" class="btn btn-success">Save Comment</button>
+  <input #commentInput type="text" class="form-control" placeholder="comment">
+  <br /><button type="submit" class="btn btn-success">Post</button>
 </form>
 
 <hr />

@@ -20,6 +20,18 @@ body{
   padding: 34px;
   border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  background-color: lightblue;
+
+
+ 
+
+}
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  
 }
 .wrapper h2{
   position: relative;
@@ -111,3 +123,4 @@ form .text h3 a{
 form .text h3 a:hover{
   text-decoration: underline;
 }
+
